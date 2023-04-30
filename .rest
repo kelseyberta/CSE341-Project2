@@ -1,0 +1,49 @@
+### Localhost requests
+
+### Recipes Requests
+### Get request
+GET http://localhost:8080/recipes
+
+### Post request
+POST http://localhost:8080/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Francese",
+  "cuisineType": "Italian",
+  "cookTime": "50 Minutes",
+  "cookTemp": "350 Degrees",
+  "ingredients": ["ingredient1","ingredient2","ingredient3","ingredient4","ingredient5"],
+  "directions": ["step1","step2","step3","step4","step5"]
+}
+
+### Put request
+PUT http://localhost:8080/recipes/Cheesecake
+Content-Type: application/json
+
+{
+    "recipeName": "Cheesecake",
+  "cuisineType": "Dessert",
+  "cookTime": "120 Minutes",
+  "cookTemp": "300 Degrees",
+  "ingredients": ["cream cheese","sugar","eggs","graham crackers","vanilla", "butter"],
+  "directions": ["step1","step2","step3","step4","step5"]
+}
+
+### Delete Request
+DELETE http://localhost:8080/recipes/Francese
+
+### Users Requests
+
+### Get request
+GET http://localhost:8080/users
+###
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+    "username": "shanemarshall",
+  "firstName": "Shane",
+  "lastName": "Marshall",
+  "password": "Password2"
+}
