@@ -20,7 +20,7 @@ const getAllUsers = async (req, res, next) => {
     try {
       const username = req.params.username;
       if (!username) {
-        res.status(400).send('Error - username is invalid. Please try again.');
+        res.status(400).send('Error: username invalid.');
         return;
       }
       const usersCollection = getCollection();
@@ -35,7 +35,7 @@ const getAllUsers = async (req, res, next) => {
   const createUser = async (req, res) => {
     try {
       if (!req.body.username) {
-        res.status(400).send('Error - Username is required');
+        res.status(400).send('Error: Username required');
         return;
       }
       const user = {
@@ -44,7 +44,7 @@ const getAllUsers = async (req, res, next) => {
         lastName: req.body.lastName,
         password: req.body.password
       };
-      console.log('user created:');
+      console.log('User created:');
       console.log(user);
       const usersCollection = getCollection();
       const result = await usersCollection.insertOne(user);
@@ -59,12 +59,12 @@ const getAllUsers = async (req, res, next) => {
     try {
       const username = req.params.username;
       if (!username) {
-        res.status(400).send('Error - username is invalid. Please try again.');
+        res.status(400).send('Error: username invalid.');
         return;
       }
   
       if (!req.body.username) {
-        res.status(400).send('Error - Username is required');
+        res.status(400).send('Error: Username required');
         return;
       }
   
@@ -88,7 +88,7 @@ const getAllUsers = async (req, res, next) => {
     try {
       const username = req.params.username;
       if (!username) {
-        res.status(400).send('Error - username is invalid. Please try again.');
+        res.status(400).send('Error: username invalid.');
         return;
       }
       const usersCollection = getCollection();

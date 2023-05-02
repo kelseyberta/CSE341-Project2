@@ -54,11 +54,11 @@ const getAllRecipes = async (req, res, next) => {
     try {
       const recipeName = req.params.recipeName;
       if (!recipeName) {
-        res.status(400).send('Error - recipeName is invalid. Please try again.');
+        res.status(400).send('Error: recipeName invalid.');
         return;
       }
       if (!req.body.recipeName) {
-        res.status(400).send('Error - recipeName is required');
+        res.status(400).send('Error: recipeName required');
         return;
       } 
       const recipe = {
@@ -82,7 +82,7 @@ const getAllRecipes = async (req, res, next) => {
     try {
       const recipeName = req.params.recipeName;
       if (!recipeName) {
-        res.status(400).send('Error - recipeName is invalid. Please try again.');
+        res.status(400).send('Error: recipeName invalid.');
         return;
       }
       const recipesCollection = getCollection();
