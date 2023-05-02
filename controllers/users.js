@@ -1,35 +1,45 @@
 const mongodb = require('../db/connect');
-const recipe = require('mongodb').recipe;
+
+const getCollection = () => {
+  return mongodb.getDb().db('recipes').collection('users');
+};
+
 
 const getAllUsers = async (req, res, next) => {
-    const result = await mongodb.getDb().db().collection('users').find();
-    result.toArray().then((lists) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists);
-    });
-  };
+  try {
+    const usersCollection = getCollection();
+    const result = await usersCollection.find().toArray();
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
-const getUser = async (req, res, next) => {
-    const username = new ObjectId(req.params.username);
-    const result = await mongodb
-      .getDb()
-      .db()
-      .collection('users')
-      .find({ username: username });
-    result.toArray().then((lists) => {
+  const getUser = async (req, res) => {
+    try {
+      const username = req.params.username;
+      if (!username) {
+        res.status(400).send('Error - username is invalid. Please try again.');
+        return;
+      }
+      const usersCollection = getCollection();
+      const result = await usersCollection.find({ username: username }).toArray();
       res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists[0]);
-    });
+      res.status(200).json(result[0]);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   };
   
   const createUser = async (req, res) => {
     const user = {
-        username: req.body.username,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        password: req.body.password   
+      username: req.body.username,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      password: req.body.password     
     };
-    const response = await mongodb.getDb().db().collection('users').insertOne(recipe);
+    const response = await mongodb.getDb().db().collection('recipes').insertOne(user);
     if (response.acknowledged) {
       res.status(201).json(response);
     } else {
@@ -58,18 +68,24 @@ const getUser = async (req, res, next) => {
     }
   };
   
+  const deleteUser = async (req, res) => {
+    try {
+      const username = req.params.username;
+      if (!username) {
+        res.status(400).send('Error - username is invalid. Please try again.');
+        return;
+      }
+      const usersCollection = getCollection();
+      const result = await usersCollection.deleteOne({ username: username });
+      console.log(`${username} was successfully deleted`);
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(result[0]);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 
-//Delete Working
-const deleteUser = async (req, res) => {
-  const username = new ObjectId(req.params.username);
-  const response = await mongodb.getDb().db().collection('users').deleteOne({ username }, true);
-  console.log(response);
-  if (response.deletedCount > 0) {
-    res.status(204).send();
-  } else {
-    res.status(500).json(response.error || 'Error occurred while deleting the user.');
-  }
-};
+
 
 
 

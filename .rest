@@ -9,14 +9,16 @@ POST http://localhost:8080/recipes
 Content-Type: application/json
 
 {
-    "recipeName": "Francese",
-  "cuisineType": "Italian",
-  "cookTime": "50 Minutes",
-  "cookTemp": "350 Degrees",
-  "ingredients": ["ingredient1","ingredient2","ingredient3","ingredient4","ingredient5"],
-  "directions": ["step1","step2","step3","step4","step5"]
+    "recipeName": "Tacos",
+  "cuisineType": "Spanish",
+  "cookTime": "20 Minutes",
+  "cookTemp": "Medium Heat",
+  "ingredients": ["ground beef","salsa","corn","guacamole"],
+  "directions": ["brown the beef in a skillet","Prep toppings you want","Put it all together"]
 }
 
+###
+GET http://localhost:8080/recipes/Tacos
 ### Put request
 PUT http://localhost:8080/recipes/Cheesecake
 Content-Type: application/json
@@ -27,7 +29,7 @@ Content-Type: application/json
   "cookTime": "120 Minutes",
   "cookTemp": "300 Degrees",
   "ingredients": ["cream cheese","sugar","eggs","graham crackers","vanilla", "butter"],
-  "directions": ["step1","step2","step3","step4","step5"]
+  "directions": ["cream eggs and cream cheese","step2","step3","step4","step5"]
 }
 
 ### Delete Request
@@ -37,6 +39,9 @@ DELETE http://localhost:8080/recipes/Francese
 
 ### Get request
 GET http://localhost:8080/users
+###
+GET http://localhost:8080/users/kelseyberta
+
 ###
 POST http://localhost:8080/users
 Content-Type: application/json
