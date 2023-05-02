@@ -33,40 +33,56 @@ const getAllUsers = async (req, res, next) => {
   };
   
   const createUser = async (req, res) => {
-    const user = {
-      username: req.body.username,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      password: req.body.password     
-    };
-    const response = await mongodb.getDb().db().collection('recipes').insertOne(user);
-    if (response.acknowledged) {
-      res.status(201).json(response);
-    } else {
-      res.status(500).json(response.error || 'Some error occurred while creating the user.');
-    }
-  };
-  
-  const updateUser = async (req, res) => {
-    const username = new ObjectId(req.params.username);
-    const user = {
+    try {
+      if (!req.body.username) {
+        res.status(400).send('Error - Username is required');
+        return;
+      }
+      const user = {
         username: req.body.username,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         password: req.body.password
-    };
-    const response = await mongodb
-      .getDb()
-      .db()
-      .collection('users')
-      .replaceOne({ username }, user);
-    console.log(response);
-    if (response.modifiedCount > 0) {
-      res.status(204).send();
-    } else {
-      res.status(500).json(response.error || 'Some error occurred while updating the user.');
+      };
+      console.log('user created:');
+      console.log(user);
+      const usersCollection = getCollection();
+      const result = await usersCollection.insertOne(user);
+      res.setHeader('Content-Type', 'application/json');
+      res.status(201).json({ id: result.insertedId });
+    } catch (err) {
+      res.status(500).json(err);
     }
   };
+  
+  const updateUser = async (req, res) => {
+    try {
+      const username = req.params.username;
+      if (!username) {
+        res.status(400).send('Error - username is invalid. Please try again.');
+        return;
+      }
+  
+      if (!req.body.username) {
+        res.status(400).send('Error - Username is required');
+        return;
+      }
+  
+      const user = {
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        password: req.body.password
+      };
+      const usersCollection = getCollection();
+      const result = await usersCollection.replaceOne({ username:username }, user);
+      console.log(result);
+  
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
+  
   
   const deleteUser = async (req, res) => {
     try {

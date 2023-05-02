@@ -1,3 +1,76 @@
+### Render requests
+
+### Recipes Requests
+### Get request
+GET https://cse-341-project-2.onrender.com/recipes
+
+### Post request
+POST https://cse-341-project-2.onrender.com/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Tacos",
+  "cuisineType": "Spanish",
+  "cookTime": "20 Minutes",
+  "cookTemp": "Medium Heat",
+  "ingredients": ["ground beef","salsa","corn","guacamole"],
+  "directions": ["brown the beef in a skillet","Prep toppings you want","Put it all together"]
+}
+
+###
+GET https://cse-341-project-2.onrender.com/recipes/Tacos
+### Put request
+PUT https://cse-341-project-2.onrender.com/recipes/Cheesecake
+Content-Type: application/json
+
+{
+    "recipeName": "Cheesecake",
+  "cuisineType": "Dessert",
+  "cookTime": "120 Minutes",
+  "cookTemp": "300 Degrees",
+  "ingredients": ["cream cheese","sugar","eggs","graham crackers","vanilla", "butter"],
+  "directions": ["cream eggs and cream cheese","step2","step3","step4","step5"]
+}
+
+### Delete Request
+DELETE https://cse-341-project-2.onrender.com/recipes/Tacos
+
+### Users Requests
+
+### Get request
+GET https://cse-341-project-2.onrender.com/users
+###
+GET https://cse-341-project-2.onrender.com/users/kelseyberta
+
+###
+POST https://cse-341-project-2.onrender.com/users
+Content-Type: application/json
+
+{
+    "username": "shanemarshall",
+  "firstName": "Shane",
+  "lastName": "Marshall",
+  "password": "Password2"
+}
+
+###
+PUT https://cse-341-project-2.onrender.com/users/shanemarshall
+Content-Type: application/json
+
+{
+    "username": "shanemarshall",
+  "firstName": "Shane",
+  "lastName": "Marshall",
+  "password": "Password4"
+}
+
+
+
+
+
+
+
+
 ### Localhost requests
 
 ### Recipes Requests
@@ -52,3 +125,15 @@ Content-Type: application/json
   "lastName": "Marshall",
   "password": "Password2"
 }
+
+###
+PUT http://localhost:8080/users/shanemarshall
+Content-Type: application/json
+
+{
+    "username": "shanemarshall",
+  "firstName": "Shane",
+  "lastName": "Marshall",
+  "password": "Password4"
+}
+
