@@ -6,8 +6,8 @@ const saveRecipe = (req, res, next) => {
     cuisineType: 'string',
     cookTime: 'string',
     cookTemp: 'string',
-    ingredients: 'string',
-    directions: 'string'
+    ingredients: 'array',
+    directions: 'array'
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {

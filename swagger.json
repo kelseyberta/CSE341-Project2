@@ -283,13 +283,13 @@
                 "username": {
                   "example": "any"
                 },
+                "password": {
+                  "example": "any"
+                },
                 "firstName": {
                   "example": "any"
                 },
                 "lastName": {
-                  "example": "any"
-                },
-                "password": {
                   "example": "any"
                 }
               }

@@ -1,4 +1,5 @@
 const mongodb = require('../db/connect');
+const passwordUtil = require('../util/passwordComplexityCheck');
 
 const getCollection = () => {
   return mongodb.getDb().db('recipes').collection('users');
@@ -67,6 +68,11 @@ const getAllUsers = async (req, res, next) => {
         res.status(400).send('Error: Username required');
         return;
       }
+      const password = req.body.password;
+    const passwordCheck = passwordUtil.passwordPass(password);
+    if (passwordCheck.error) {
+      res.status(400).send({ message: passwordCheck.error });
+      return;}
   
       const user = {
         username: req.body.username,
