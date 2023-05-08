@@ -40,7 +40,8 @@ const getAllRecipes = async (req, res, next) => {
         cookTime: req.body.cookTime,
         cookTemp: req.body.cookTemp,
         ingredients: req.body.ingredients,
-        directions: req.body.directions      
+        directions: req.body.directions,
+        servings: req.body.servings      
     };
     const response = await mongodb.getDb().db().collection('recipes').insertOne(recipe);
     if (response.acknowledged) {
@@ -67,7 +68,8 @@ const getAllRecipes = async (req, res, next) => {
         cookTime: req.body.cookTime,
         cookTemp: req.body.cookTemp,
         ingredients: req.body.ingredients,
-        directions: req.body.directions      
+        directions: req.body.directions,
+        servings: req.body.servings      
     };
       const recipesCollection = getCollection();
       const result = await recipesCollection.replaceOne({ recipeName:recipeName }, recipe);
