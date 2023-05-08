@@ -10,8 +10,7 @@ const port = process.env.PORT || 8080;
 const MongoClient = require('mongodb').MongoClient;
 const mongodb = require('./db/connect');
 
-const recipesRoutes = require('./routes/recipes');
-const userRoutes = require('./routes/users')
+
 
 var app = express();
 
@@ -20,12 +19,9 @@ app.use(bodyParser.json())
   secret: "secret",
   resave: false ,
   saveUninitialized: true ,
-}))
-// This is the basic express session({..}) initialization.
-.use(passport.initialize()) 
-// init passport on every route call.
+}));
+app.use(passport.initialize()) 
 .use(passport.session())    
-// allow passport to use "express-session".
 .use((req, res, next) => {
   res.setHeader("Access-Controll-Allow-Origin", "*");
   res.setHeader(
@@ -41,8 +37,7 @@ app.use(bodyParser.json())
 .use(cors({ methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']}))
 .use(cors({ origin: '*'}))
 .use("/", require("./routes/index.js"));
-app.use(recipesRoutes);
-app.use(userRoutes);
+
 
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
@@ -50,9 +45,7 @@ passport.use(new GitHubStrategy({
   callbackURL: process.env.CALLBACK_URL
 },
 function(accessToken, refreshToken, profile, done) {
-  //User.findOrCreate({ githubId: profile.id }, function (err, user) {
     return done(null, profile);
-  //});
 }
 ));
 

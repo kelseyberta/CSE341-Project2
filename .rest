@@ -14,7 +14,8 @@ Content-Type: application/json
   "cookTime": "20 Minutes",
   "cookTemp": "Medium Heat",
   "ingredients": ["ground beef","salsa","corn","guacamole"],
-  "directions": ["brown the beef in a skillet","Prep toppings you want","Put it all together"]
+  "directions": ["brown the beef in a skillet","Prep toppings you want","Put it all together"],
+  "servings": "4"
 }
 
 ###
@@ -74,10 +75,11 @@ Content-Type: application/json
 ### Localhost requests
 
 ### Recipes Requests
-### Get request
+
+### Get request all recipes
 GET http://localhost:8080/recipes
 
-### Post request
+### Post request recipe
 POST http://localhost:8080/recipes
 Content-Type: application/json
 
@@ -90,9 +92,9 @@ Content-Type: application/json
   "directions": ["brown the beef in a skillet","Prep toppings you want","Put it all together"]
 }
 
-###
+### get one recipe
 GET http://localhost:8080/recipes/Tacos
-### Put request
+### Put request one recipe
 PUT http://localhost:8080/recipes/Cheesecake
 Content-Type: application/json
 
@@ -105,17 +107,17 @@ Content-Type: application/json
   "directions": ["cream eggs and cream cheese","step2","step3","step4","step5"]
 }
 
-### Delete Request
+### Delete Request one recipe
 DELETE http://localhost:8080/recipes/Francese
 
 ### Users Requests
 
-### Get request
+### Get request all users
 GET http://localhost:8080/users
-###
+### Get request one user
 GET http://localhost:8080/users/kelseyberta
 
-###
+### Post request
 POST http://localhost:8080/users
 Content-Type: application/json
 
@@ -126,7 +128,7 @@ Content-Type: application/json
   "password": "Password2"
 }
 
-###
+### Put request
 PUT http://localhost:8080/users/shanemarshall
 Content-Type: application/json
 
