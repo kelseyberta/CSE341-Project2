@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Recipes API",
-    "description": "Get recipes and users",
+    "description": "Get, update add, and delete recipes and users if logged in.",
     "version": "1.0.0"
   },
   "host": "https://cse-341-project-2.onrender.com",
@@ -13,28 +13,28 @@
   "paths": {
     "/login": {
       "get": {
-        "description": "",
+        "description": "Log in to change data",
         "parameters": [],
         "responses": {}
       }
     },
     "/logout": {
       "get": {
-        "description": "",
+        "description": "Log out when done",
         "parameters": [],
         "responses": {}
       }
     },
     "/api-docs": {
       "get": {
-        "description": "",
+        "description": "Get to swagger",
         "parameters": [],
         "responses": {}
       }
     },
     "/recipes/": {
       "get": {
-        "description": "",
+        "description": "Get all recipes in MongoDB",
         "produces": [
           "application/json"
         ],
@@ -49,7 +49,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Add a recipe to MongoDB if logged in. Name is required.",
         "parameters": [
           {
             "name": "body",
@@ -100,7 +100,7 @@
     },
     "/recipes/{recipeName}": {
       "get": {
-        "description": "",
+        "description": "Get recipe by name.",
         "produces": [
           "application/json"
         ],
@@ -125,7 +125,7 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Update recipe if logged in, recipe name required.",
         "parameters": [
           {
             "name": "recipeName",
@@ -180,7 +180,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete recipe if logged in, recipe name required.",
         "produces": [
           "application/json"
         ],
@@ -210,7 +210,7 @@
     },
     "/users/": {
       "get": {
-        "description": "",
+        "description": "Get all users",
         "produces": [
           "application/json"
         ],
@@ -225,7 +225,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Add user to MongoDB if logged in. Username and password required.",
         "produces": [
           "application/json"
         ],
@@ -273,7 +273,7 @@
     },
     "/users/{username}": {
       "get": {
-        "description": "",
+        "description": "Retrieve user by user name.",
         "produces": [
           "application/json"
         ],
@@ -298,7 +298,7 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "update user if logged in username required.",
         "parameters": [
           {
             "name": "username",
@@ -344,7 +344,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete user if logged in, username required.",
         "produces": [
           "application/json"
         ],
