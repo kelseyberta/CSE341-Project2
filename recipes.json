@@ -1,0 +1,21 @@
+{
+    "recipeName": "Brownies",
+    "cuisineType": "Dessert",
+    "cookTime": "45 Minutes",
+    "cookTemp": "375 Degrees",
+    "ingredients": [
+      "Cocoa powder",
+      "flour",
+      "baking powder",
+      "chocolate chips",
+      "eggs"
+    ],
+    "directions": [
+      "Whisk dry ingredients",
+      "Cream wet ingreditents",
+      "Combine wet ingredients into dry ingredients",
+      "Do not over mix",
+      "add chcolate chips on top and bake",
+      "let cool or serve immediately with ice cream"
+    ]
+  }
