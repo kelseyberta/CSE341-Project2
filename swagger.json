@@ -5,10 +5,10 @@
     "description": "Get recipes and users",
     "version": "1.0.0"
   },
-  "host": "cse-341-project-2.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/login": {

@@ -21,7 +21,7 @@ const getAllUsers = async (req, res, next) => {
     try {
       const username = req.params.username;
       if (!username) {
-        res.status(400).send('Error: username invalid.');
+        res.status(400).send('Error: username invalid. Please try again');
         return;
       }
       const usersCollection = getCollection();
@@ -45,6 +45,11 @@ const getAllUsers = async (req, res, next) => {
         lastName: req.body.lastName,
         password: req.body.password
       };
+      const password = req.body.password;
+    const passwordCheck = passwordUtil.passwordPass(password);
+    if (passwordCheck.error) {
+      res.status(400).send({ message: passwordCheck.error });
+      return;}
       console.log('User created:');
       console.log(user);
       const usersCollection = getCollection();
@@ -60,7 +65,7 @@ const getAllUsers = async (req, res, next) => {
     try {
       const username = req.params.username;
       if (!username) {
-        res.status(400).send('Error: username invalid.');
+        res.status(400).send('Error: username invalid. Please try again.');
         return;
       }
   
@@ -94,7 +99,7 @@ const getAllUsers = async (req, res, next) => {
     try {
       const username = req.params.username;
       if (!username) {
-        res.status(400).send('Error: username invalid.');
+        res.status(400).send('Error: username invalid. Please try again.');
         return;
       }
       const usersCollection = getCollection();
